@@ -28,7 +28,7 @@ function playRound() {
 	}
 }
 
-for (let i = 0; i < 5; i++) {
+/*for (let i = 0; i < 5; i++) {
 	playRound();
 }
 
@@ -38,4 +38,4 @@ if (humanScore != computerScore) {
 	);
 } else {
 	console.log("The game is a tie!");
-}
+}*/

@@ -4,8 +4,42 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Rock, Paper, Scissors</title>
+		<link rel="stylesheet" href="./style.css" />
 	</head>
 	<body>
+		<img
+			src="./img/skull-dungeon.png"
+			alt="A dungeon shaped like a skull"
+			width="300"
+		/>
+		<div class="options">
+			<img
+				class="option"
+				src="./img/rock.png"
+				alt="Rock"
+				height="100"
+				onclick="alert('rock');"
+			/>
+			<img
+				class="option"
+				src="./img/paper.png"
+				alt="Paper"
+				height="100"
+				onclick="alert('paper');"
+			/>
+			<img
+				class="option"
+				src="./img/scissors.png"
+				alt="Scissors"
+				height="100"
+				onclick="alert('scissors');"
+			/>
+		</div>
+		<img src="./img/wizard.png" alt="A helpful wizard" width="100" />
+		<p>
+			To progress through this dungeon, you must win a game of rock, paper,
+			scissors.
+		</p>
 		<script src="rock-paper-scissors.js"></script>
 	</body>
 </html>
