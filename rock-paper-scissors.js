@@ -18,39 +18,76 @@ const left = document.getElementById("left");
 const right = document.getElementById("right");
 let leftDivs = Array.prototype.slice.call(left.children); //all div children of the left side, as an array
 let rightDivs = Array.prototype.slice.call(right.children); //all div children of the right side, as an array
+let rockWins = new Audio("./audio/clang.mp3");
+let paperWins = new Audio("./audio/rustle-paper.mp3");
+let scissorsWins = new Audio("./audio/snip.mp3");
 
-function getComputerChoice() {
-	return options[Math.floor(Math.random() * options.length)];
-}
-
-function chooseRock() {
+function clickRock() {
 	playRound("rock");
 }
-function choosePaper() {
+function clickPaper() {
 	playRound("paper");
 }
-function chooseScissors() {
+function clickScissors() {
 	playRound("scissors");
 }
 
 function playRound(humanChoice) {
+	let computerChoice = options[Math.floor(Math.random() * options.length)];
+	let computerIndex = options.indexOf(computerChoice);
 	let humanIndex = options.indexOf(humanChoice);
-	let computerIndex = options.indexOf(getComputerChoice());
+	let message = document.getElementById("message");
+
 	console.log(options[computerIndex]);
+	message.textContent = "I chose " + computerChoice + ", ";
 
 	if (humanIndex != computerIndex) {
 		if (computerIndex + 2 == humanIndex || computerIndex - 1 == humanIndex) {
-			console.log("computer wins");
 			changeWeight(-1);
 			computerScore++;
+			message.textContent +=
+				"and " + computerChoice + " beats " + humanChoice + ". I win.";
+			playSound(computerChoice);
 		} else {
-			console.log("human wins");
 			changeWeight(1);
 			humanScore++;
+			message.textContent +=
+				"but " + humanChoice + " beats " + computerChoice + ". You win.";
+			playSound(humanChoice);
 		}
 	} else {
-		console.log("tie");
+		message.textContent += "so it's a tie.";
+		playSound(computerChoice);
 	}
+}
+
+function playSound(sound) {
+	switch (sound) {
+		case "rock":
+			rockWins.play();
+			break;
+		case "paper":
+			paperWins.play();
+			break;
+		case "scissors":
+			scissorsWins.play();
+			break;
+		default:
+			pass;
+	}
+}
+
+function changeWeight(val) {
+	let br = getNewBarRotation(val); //bar rotation
+	let lyt = getNewTransforms(br)[0]; //left y transform
+	let ryt = getNewTransforms(br)[1]; //right y transform
+	//rotate bar
+	bar.style.transform = "rotate(" + br + "deg)";
+	//transform left elements down and right elements up
+	leftDivs.forEach((d) => (d.style.transform = "translateY(" + lyt + "px)"));
+	rightDivs.forEach(
+		(d) => (d.style.transform = "translate(200px, " + ryt + "px)")
+	);
 }
 
 function getNewBarRotation(step) {
@@ -82,17 +119,4 @@ function getNewTransforms(rotation) {
 		}
 	}
 	return [lyt, ryt];
-}
-
-function changeWeight(val) {
-	let br = getNewBarRotation(val); //bar rotation
-	let lyt = getNewTransforms(br)[0]; //left y transform
-	let ryt = getNewTransforms(br)[1]; //right y transform
-	//rotate bar
-	bar.style.transform = "rotate(" + br + "deg)";
-	//transform left elements down and right elements up
-	leftDivs.forEach((d) => (d.style.transform = "translateY(" + lyt + "px)"));
-	rightDivs.forEach(
-		(d) => (d.style.transform = "translate(200px, " + ryt + "px)")
-	);
 }
