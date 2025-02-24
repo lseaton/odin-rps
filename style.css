@@ -1,3 +1,83 @@
-.option {
-	border-style: solid;
+:root {
+	--background: #8e7353;
+	--scales: gold;
+}
+body {
+	margin: 0;
+}
+.top {
+	display: flex;
+	justify-content: center;
+	gap: 60px;
+	background: var(--background);
+	padding: 50px;
+}
+.helpful {
+	display: flex;
+	align-items: center;
+}
+.options {
+	display: flex;
+	gap: 10px;
+	justify-content: space-evenly;
+}
+.center-helpful {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.scales {
+	height: 280px;
+	width: 320px;
+}
+.scales div {
+	position: absolute;
+}
+#bar {
+	width: 250px;
+	height: 10px;
+	background: var(--scales);
+	margin-left: 35px;
+	border-radius: 50px;
+}
+.pole {
+	width: 14px;
+	height: 275px;
+	background: var(--scales);
+	margin-left: 152px;
+	border-radius: 50px;
+}
+
+.black-triangle {
+	width: 0;
+	height: 0;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-bottom: 150px solid var(--scales);
+	margin-left: 10px;
+}
+.white-triangle {
+	width: 0;
+	height: 0;
+	border-left: 40px solid transparent;
+	border-right: 40px solid transparent;
+	border-bottom: 130px solid var(--background);
+	margin: 10px 0 0 20px;
+}
+.bowl {
+	width: 120px;
+	height: 40px;
+	border-radius: 0px 0px 60px 60px;
+	background: var(--scales);
+	margin-top: 140px;
+}
+#right > div {
+	transform: translate(200px);
+}
+.base {
+	width: 120px;
+	height: 30px;
+	background: var(--scales);
+	border-radius: 50%;
+	margin: 250px 0 0 100px;
 }

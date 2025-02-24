@@ -7,11 +7,41 @@
 		<link rel="stylesheet" href="./style.css" />
 	</head>
 	<body>
-		<img
-			src="./img/skull-dungeon.png"
-			alt="A dungeon shaped like a skull"
-			width="300"
-		/>
+		<div class="top">
+			<img
+				class="dungeon"
+				src="./img/skull-dungeon.png"
+				alt="A dungeon shaped like a skull"
+				width="300"
+			/>
+			<div class="helpful">
+				<img src="./img/wizard.png" alt="An opposing wizard" height="150" />
+				<div class="center-helpful">
+					<div class="scales">
+						<div id="bar"></div>
+						<div id="left">
+							<div class="black-triangle"></div>
+							<div class="white-triangle"></div>
+							<div class="bowl"></div>
+						</div>
+						<div id="right">
+							<div class="black-triangle"></div>
+							<div class="white-triangle"></div>
+							<div class="bowl"></div>
+						</div>
+						<div class="pole"></div>
+						<div class="base"></div>
+					</div>
+					<p>
+						To progress through this dungeon, you must beat me in rock, paper,
+						scissors. We shall use these golden scales to keep score. You must
+						tip the scales all the way to your side (3 hits from 0). If the
+						scales tip all the way to my side, I win.
+					</p>
+				</div>
+				<img src="./img/knight.png" alt="A knight (you)" height="200" />
+			</div>
+		</div>
 		<div class="options">
 			<img
 				class="option"
@@ -35,11 +65,7 @@
 				onclick="alert('scissors');"
 			/>
 		</div>
-		<img src="./img/wizard.png" alt="A helpful wizard" width="100" />
-		<p>
-			To progress through this dungeon, you must win a game of rock, paper,
-			scissors.
-		</p>
+
 		<script src="rock-paper-scissors.js"></script>
 	</body>
 </html>
