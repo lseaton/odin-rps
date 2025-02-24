@@ -7,15 +7,11 @@ body {
 }
 .top {
 	display: flex;
-	justify-content: center;
-	gap: 60px;
-	background: var(--background);
-	padding: 50px;
-}
-.helpful {
-	display: flex;
 	align-items: center;
+	background: var(--background);
+	padding: 40px;
 }
+
 .options {
 	display: flex;
 	gap: 10px;

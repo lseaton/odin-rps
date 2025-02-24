@@ -8,40 +8,33 @@
 	</head>
 	<body>
 		<div class="top">
-			<img
-				class="dungeon"
-				src="./img/skull-dungeon.png"
-				alt="A dungeon shaped like a skull"
-				width="300"
-			/>
-			<div class="helpful">
-				<img src="./img/wizard.png" alt="An opposing wizard" height="150" />
-				<div class="center-helpful">
-					<div class="scales">
-						<div id="bar"></div>
-						<div id="left">
-							<div class="black-triangle"></div>
-							<div class="white-triangle"></div>
-							<div class="bowl"></div>
-						</div>
-						<div id="right">
-							<div class="black-triangle"></div>
-							<div class="white-triangle"></div>
-							<div class="bowl"></div>
-						</div>
-						<div class="pole"></div>
-						<div class="base"></div>
+			<img src="./img/wizard.png" alt="An opposing wizard" height="200" />
+			<div class="center-helpful">
+				<div class="scales">
+					<div id="bar"></div>
+					<div id="left">
+						<div class="black-triangle"></div>
+						<div class="white-triangle"></div>
+						<div class="bowl"></div>
 					</div>
-					<p>
-						To progress through this dungeon, you must beat me in rock, paper,
-						scissors. We shall use these golden scales to keep score. You must
-						tip the scales all the way to your side (3 hits from 0). If the
-						scales tip all the way to my side, I win.
-					</p>
+					<div id="right">
+						<div class="black-triangle"></div>
+						<div class="white-triangle"></div>
+						<div class="bowl"></div>
+					</div>
+					<div class="pole"></div>
+					<div class="base"></div>
 				</div>
-				<img src="./img/knight.png" alt="A knight (you)" height="200" />
+				<p>
+					Your final test before becoming a knight is a test of intuition. You
+					must beat me in rock, paper, scissors. We shall use these golden
+					scales to keep score. You must tip the scales all the way to your side
+					(3 hits from 0). If the scales tip all the way to my side, I win.
+				</p>
 			</div>
+			<img src="./img/knight.png" alt="A knight (you)" height="250" />
 		</div>
+		<p>Choose your weapon:</p>
 		<div class="options">
 			<img
 				class="option"
@@ -64,6 +57,9 @@
 				height="100"
 				onclick="alert('scissors');"
 			/>
+
+			<button type="button" onclick="leftButton()" id="leftBtn">Left</button>
+			<button type="button" onclick="rightButton()" id="rightBtn">Right</button>
 		</div>
 
 		<script src="rock-paper-scissors.js"></script>
