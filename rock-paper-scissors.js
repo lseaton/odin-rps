@@ -26,16 +26,17 @@ window.onload = function () {
 	document.getElementById("music").play();
 };
 
+//TODO: when user refreshes the page, the toggle botton doesn't work for the next two clicks. Fix this.
 function toggleMute() {
-	muted = !muted;
+	let music = document.getElementById("music");
+	muted ? music.play() : music.pause();
 	let icon = document.getElementById("mute-icon");
 	let currIconSrc = icon.src;
 	let newIconSrc = currIconSrc.toString().includes("/img/unmute.png")
 		? "./img/mute.png"
 		: "./img/unmute.png";
 	icon.src = newIconSrc;
-	let music = document.getElementById("music");
-	music.paused ? music.play() : music.pause();
+	muted = !muted;
 }
 
 function clickRock() {
