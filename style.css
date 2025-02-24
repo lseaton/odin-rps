@@ -1,6 +1,8 @@
 :root {
-	--background: #8e7353;
 	--scales: gold;
+	--teal: #0d7c73;
+	--light-teal: #39f8f5;
+	--dark-teal: #013836;
 }
 body {
 	margin: 0;
@@ -12,14 +14,23 @@ p {
 .mute-btn {
 	position: fixed;
 	margin: 16px;
+	background: var(--light-teal);
+	padding: 8px;
+	border-radius: 50%;
 }
 .top {
 	display: flex;
 	align-items: center;
-	background: var(--background);
+	justify-content: space-evenly;
 	padding: 40px;
+	background-image: url("./img/forest.jpg");
+	background-size: cover;
 }
-
+#intro {
+	color: white;
+	background: var(--dark-teal);
+	padding: 12px;
+}
 .options {
 	display: flex;
 	gap: 10px;
@@ -29,10 +40,14 @@ p {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	width: 460px;
 }
 .scales {
 	height: 280px;
 	width: 320px;
+	padding: 40px 10px 20px 10px;
+	background: var(--teal);
+	border-radius: 16px;
 }
 .scales div {
 	position: absolute;
@@ -65,7 +80,7 @@ p {
 	height: 0;
 	border-left: 40px solid transparent;
 	border-right: 40px solid transparent;
-	border-bottom: 130px solid var(--background);
+	border-bottom: 130px solid var(--teal);
 	margin: 10px 0 0 20px;
 }
 .bowl {
