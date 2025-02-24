@@ -1,4 +1,4 @@
-<p>A simple rock, paper, scissors game that plays entirely in the console of an html page.</p>
+<p>A rock, paper, scissors game.</p>
 <br>
 <p>--Pixabay credits--</p>
 <p>Rock, paper, and scissors audio from <a href="https://pixabay.com/users/freesound_community-46691455/">freesound_community</a>.</p>
