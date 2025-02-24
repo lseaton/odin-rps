@@ -29,7 +29,8 @@
 					Your final test before becoming a knight is a test of intuition. You
 					must beat me in rock, paper, scissors. We shall use these golden
 					scales to keep score. You must tip the scales all the way to your side
-					(3 hits from 0). If the scales tip all the way to my side, I win.
+					(in other words, your score must be greater than mine by 3). If the
+					scales tip all the way to my side, I win.
 				</p>
 			</div>
 			<img src="./img/knight.png" alt="A knight (you)" height="250" />
@@ -41,26 +42,24 @@
 				src="./img/rock.png"
 				alt="Rock"
 				height="100"
-				onclick="alert('rock');"
+				onclick="chooseRock()"
 			/>
 			<img
 				class="option"
 				src="./img/paper.png"
 				alt="Paper"
 				height="100"
-				onclick="alert('paper');"
+				onclick="choosePaper()"
 			/>
 			<img
 				class="option"
 				src="./img/scissors.png"
 				alt="Scissors"
 				height="100"
-				onclick="alert('scissors');"
+				onclick="chooseScissors()"
 			/>
-
-			<button type="button" onclick="leftButton()" id="leftBtn">Left</button>
-			<button type="button" onclick="rightButton()" id="rightBtn">Right</button>
 		</div>
+		<p id="message">What luck!</p>
 
 		<script src="rock-paper-scissors.js"></script>
 	</body>

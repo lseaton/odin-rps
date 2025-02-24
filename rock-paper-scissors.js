@@ -2,48 +2,7 @@ const options = ["rock", "paper", "scissors"];
 let humanScore = 0;
 let computerScore = 0;
 
-function getComputerChoice() {
-	return options[Math.floor(Math.random() * options.length)];
-}
-
-function getHumanChoice() {
-	return prompt("Enter rock, paper, or scissors:").toLowerCase();
-}
-
-function playRound() {
-	let humanIndex = options.indexOf(getHumanChoice()); //no error-catching for bad input because the write-in prompt will eventually be replaced with buttons anyway
-	let computerIndex = options.indexOf(getComputerChoice());
-	console.log(options[computerIndex]);
-
-	if (humanIndex != computerIndex) {
-		if (computerIndex + 2 == humanIndex || computerIndex - 1 == humanIndex) {
-			console.log("computer wins");
-			computerScore++;
-		} else {
-			console.log("human wins");
-			humanScore++;
-		}
-	} else {
-		console.log("tie");
-	}
-}
-
-/*for (let i = 0; i < 5; i++) {
-	playRound();
-}
-
-if (humanScore != computerScore) {
-	console.log(
-		humanScore > computerScore ? "You win the game!" : "Computer wins the game"
-	);
-} else {
-	console.log("The game is a tie!");
-}*/
-
-////////////////////////////
-////// Scales section //////
-////////////////////////////
-//Array for the matrices representing different rotations, ascending from -15 to 15 by fives
+//Array for the matrices representing different bar rotations, ascending from -15 to 15 by fives
 const matRotation = [
 	"matrix(0.965926, -0.258819, 0.258819, 0.965926, 0, 0)",
 	"matrix(0.984808, -0.173648, 0.173648, 0.984808, 0, 0)",
@@ -59,6 +18,40 @@ const left = document.getElementById("left");
 const right = document.getElementById("right");
 let leftDivs = Array.prototype.slice.call(left.children); //all div children of the left side, as an array
 let rightDivs = Array.prototype.slice.call(right.children); //all div children of the right side, as an array
+
+function getComputerChoice() {
+	return options[Math.floor(Math.random() * options.length)];
+}
+
+function chooseRock() {
+	playRound("rock");
+}
+function choosePaper() {
+	playRound("paper");
+}
+function chooseScissors() {
+	playRound("scissors");
+}
+
+function playRound(humanChoice) {
+	let humanIndex = options.indexOf(humanChoice);
+	let computerIndex = options.indexOf(getComputerChoice());
+	console.log(options[computerIndex]);
+
+	if (humanIndex != computerIndex) {
+		if (computerIndex + 2 == humanIndex || computerIndex - 1 == humanIndex) {
+			console.log("computer wins");
+			changeWeight(-1);
+			computerScore++;
+		} else {
+			console.log("human wins");
+			changeWeight(1);
+			humanScore++;
+		}
+	} else {
+		console.log("tie");
+	}
+}
 
 function getNewBarRotation(step) {
 	let matrix = window.getComputedStyle(bar).transform.toString(); //retrieves the current rotation matrix in a string form
@@ -102,11 +95,4 @@ function changeWeight(val) {
 	rightDivs.forEach(
 		(d) => (d.style.transform = "translate(200px, " + ryt + "px)")
 	);
-}
-
-function leftButton() {
-	changeWeight(-1);
-}
-function rightButton() {
-	changeWeight(1);
 }

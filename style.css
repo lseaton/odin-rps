@@ -5,6 +5,9 @@
 body {
 	margin: 0;
 }
+p {
+	text-align: center;
+}
 .top {
 	display: flex;
 	align-items: center;
