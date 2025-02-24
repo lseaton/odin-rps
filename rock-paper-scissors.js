@@ -1,7 +1,4 @@
 const options = ["rock", "paper", "scissors"];
-let humanScore = 0;
-let computerScore = 0;
-
 //Array for the matrices representing different bar rotations, ascending from -15 to 15 by fives
 const matRotation = [
 	"matrix(0.965926, -0.258819, 0.258819, 0.965926, 0, 0)",
@@ -16,11 +13,24 @@ const degRotation = [-15, -10, -5, 0, 5, 10, 15];
 const bar = document.getElementById("bar");
 const left = document.getElementById("left");
 const right = document.getElementById("right");
-let leftDivs = Array.prototype.slice.call(left.children); //all div children of the left side, as an array
-let rightDivs = Array.prototype.slice.call(right.children); //all div children of the right side, as an array
-let rockWins = new Audio("./audio/clang.mp3");
-let paperWins = new Audio("./audio/rustle-paper.mp3");
-let scissorsWins = new Audio("./audio/snip.mp3");
+const leftDivs = Array.prototype.slice.call(left.children); //all div children of the left side, as an array
+const rightDivs = Array.prototype.slice.call(right.children); //all div children of the right side, as an array
+const rockWins = new Audio("./audio/clang.mp3");
+const paperWins = new Audio("./audio/rustle-paper.mp3");
+const scissorsWins = new Audio("./audio/snip.mp3");
+let humanScore = 0;
+let computerScore = 0;
+let muted = false;
+
+function toggleMute() {
+	muted = !muted;
+	let icon = document.getElementById("mute-icon");
+	let currIconSrc = icon.src;
+	let newIconSrc = currIconSrc.toString().includes("/img/unmute.png")
+		? "./img/mute.png"
+		: "./img/unmute.png";
+	icon.src = newIconSrc;
+}
 
 function clickRock() {
 	playRound("rock");
@@ -62,18 +72,20 @@ function playRound(humanChoice) {
 }
 
 function playSound(sound) {
-	switch (sound) {
-		case "rock":
-			rockWins.play();
-			break;
-		case "paper":
-			paperWins.play();
-			break;
-		case "scissors":
-			scissorsWins.play();
-			break;
-		default:
-			pass;
+	if (!muted) {
+		switch (sound) {
+			case "rock":
+				rockWins.play();
+				break;
+			case "paper":
+				paperWins.play();
+				break;
+			case "scissors":
+				scissorsWins.play();
+				break;
+			default:
+				pass;
+		}
 	}
 }
 

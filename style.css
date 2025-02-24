@@ -8,6 +8,11 @@ body {
 p {
 	text-align: center;
 }
+
+.mute-btn {
+	position: fixed;
+	margin: 16px;
+}
 .top {
 	display: flex;
 	align-items: center;
