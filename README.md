@@ -1,7 +1,8 @@
 <p>A simple rock, paper, scissors game that plays entirely in the console of an html page.</p>
 <br>
 <p>--Pixabay credits--</p>
-<p>Audio from <a href="https://pixabay.com/users/freesound_community-46691455/">freesound_community</a>.</p>
+<p>Rock, paper, and scissors audio from <a href="https://pixabay.com/users/freesound_community-46691455/">freesound_community</a>.</p>
+<p>Background music from <a href="https://pixabay.com/users/geoffharvey-9096471/">geoffharvey</a>.</p>
 <p>Wizard, rock, manuscript, scissors, and skull dungeon images from <a href="https://pixabay.com/users/openclipart-vectors-30363/">OpenClipart-Vectors</a>.</p>
 <p>Knight image from <a href="https://pixabay.com/users/silviap_design-1583911/">SilviaP_Design</a>.</p>
 <p>Mute and unmute icons from <a href="https://pixabay.com/users/josy_dom_alexis-487968/">Josy_Dom_Alexis</a>.</p>

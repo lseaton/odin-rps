@@ -22,6 +22,10 @@ let humanScore = 0;
 let computerScore = 0;
 let muted = false;
 
+window.onload = function () {
+	document.getElementById("music").play();
+};
+
 function toggleMute() {
 	muted = !muted;
 	let icon = document.getElementById("mute-icon");
@@ -30,6 +34,8 @@ function toggleMute() {
 		? "./img/mute.png"
 		: "./img/unmute.png";
 	icon.src = newIconSrc;
+	let music = document.getElementById("music");
+	music.paused ? music.play() : music.pause();
 }
 
 function clickRock() {
