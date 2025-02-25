@@ -22,7 +22,12 @@ let humanScore = 0;
 let computerScore = 0;
 let muted = false;
 
+rockWins.volume = 0.3;
+paperWins.volume = 1;
+scissorsWins.volume = 1;
+
 window.onload = function () {
+	document.getElementById("music").volume = 0.2;
 	document.getElementById("music").play();
 	for (let i = 0; i < 3; i++) {
 		document.querySelectorAll(".shimmer")[i].style.visibility = "hidden";
@@ -55,16 +60,6 @@ function focusUp(c) {
 function unfocus(c) {
 	document.querySelector(c + " .shimmer").style.visibility = "hidden";
 	followMouse(c);
-}
-
-function clickRock() {
-	playRound("rock");
-}
-function clickPaper() {
-	playRound("paper");
-}
-function clickScissors() {
-	playRound("scissors");
 }
 
 function playRound(humanChoice) {

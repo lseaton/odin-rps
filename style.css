@@ -23,7 +23,6 @@ p {
 	background: var(--light-teal);
 	padding: 8px;
 	border-radius: 50%;
-	/*box-shadow: 0px 0px 18px;*/
 }
 .top {
 	display: flex;
@@ -46,7 +45,7 @@ p {
 	height: 100px;
 }
 
-/*Code below modified from https://www.codeguage.com/blog/shimmer-effect-html-css.*/
+/*Code section below modified from https://www.codeguage.com/blog/shimmer-effect-html-css.*/
 @keyframes shimmer {
 	to {
 		background-position-x: 100%;
@@ -67,6 +66,7 @@ p {
 	background-repeat: no-repeat;
 	animation: shimmer 0.75s infinite linear;
 }
+/*End code section modified from https://www.codeguage.com/blog/shimmer-effect-html-css.*/
 
 .center-helpful {
 	display: flex;
