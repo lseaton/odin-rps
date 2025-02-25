@@ -1,3 +1,6 @@
+//TODO: Add victory and loss music
+//TODO: (eventually) Add hurt animation (short red+shake) to the wizard and knight sprites when they lose a round
+
 const options = ["rock", "paper", "scissors"];
 //Array for the matrices representing different bar rotations, ascending from -15 to 15 by fives
 const matRotation = [
@@ -18,8 +21,8 @@ const rightDivs = Array.prototype.slice.call(right.children); //all div children
 const humanWinsRound = new Audio("./audio/retro-coin-1.mp3");
 const computerWinsRound = new Audio("./audio/retro-hurt-1.mp3");
 const tieRound = new Audio("./audio/retro-select.mp3");
-let humanScore = 0;
-let computerScore = 0;
+
+let numRounds = 0;
 let muted = false;
 
 humanWinsRound.volume = 0.08;
@@ -34,7 +37,8 @@ window.onload = function () {
 	}
 };
 
-//TODO: when user refreshes the page, the toggle botton doesn't work for the next two clicks. Fix this.
+/*TODO: Make audio default muted, but prompt (with emphasis) the user to turn on audio, recommended. 
+Browsers will often default mute background music anyway, no matter what your code says*/
 function toggleMute() {
 	let music = document.getElementById("music");
 	muted ? music.play() : music.pause();
@@ -68,6 +72,7 @@ function playRound(humanChoice) {
 	let humanIndex = options.indexOf(humanChoice);
 	let message = document.getElementById("message");
 
+	numRounds++;
 	message.textContent = "I chose " + computerChoice + ", ";
 
 	if (humanIndex != computerIndex) {
@@ -78,9 +83,12 @@ function playRound(humanChoice) {
 				computerWinsRound.play();
 			}
 			if (!isGameOver()) {
-				computerScore++;
 				message.textContent +=
-					"and " + computerChoice + " beats " + humanChoice + ". I win.";
+					"and " +
+					computerChoice +
+					" beats " +
+					humanChoice +
+					". I win this round.";
 			} else {
 				//Computer wins game
 				gameOver("computer");
@@ -92,9 +100,12 @@ function playRound(humanChoice) {
 				humanWinsRound.play();
 			}
 			if (!isGameOver()) {
-				humanScore++;
 				message.textContent +=
-					"but " + humanChoice + " beats " + computerChoice + ". You win.";
+					"but " +
+					humanChoice +
+					" beats " +
+					computerChoice +
+					". You win this round.";
 			} else {
 				//Human wins game
 				gameOver("human");
@@ -116,12 +127,17 @@ function isGameOver() {
 }
 
 function gameOver(winner) {
+	let message = document.getElementById("message");
 	if (winner == "human") {
 		message.textContent =
-			"Your intuition has served you well! You are now a knight of the realm.";
+			"Your intuition has served you well! Having fought bravely for " +
+			numRounds +
+			" rounds, you have proven yourself worthy of becoming a knight of the realm.";
 	} else {
 		message.textContent =
-			"Your intuition has failed you. You shall not become a knight today.";
+			"Alas, your intuition failed you. You fought bravely for " +
+			numRounds +
+			" rounds, but you shall not become a knight today.";
 	}
 	//Disable the options
 	let weapons = document.querySelectorAll(".options div");

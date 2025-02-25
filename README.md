@@ -2,7 +2,9 @@
 <br>
 <p>--Pixabay credits--</p>
 <p>Retro game sounds from <a href="https://pixabay.com/users/driken5482-45721595/">Driken5482</a>.</p>
-<p>Background music from <a href="https://pixabay.com/users/geoffharvey-9096471/">geoffharvey</a>.</p>
+<p>Deep in the Dell music from <a href="https://pixabay.com/users/geoffharvey-9096471/">geoffharvey</a>.</p>
+<p>"You lose" sound effect from <a href="https://pixabay.com/users/make_more_sound-35032787/">Make_More_Sound</a>.</p>
+<p>"You win" music from <a href="https://pixabay.com/users/crab_audio-47493304/">Crab_Audio</a>.</p>
 <p>Wizard, rock, manuscript, scissors images from <a href="https://pixabay.com/users/openclipart-vectors-30363/">OpenClipart-Vectors</a>.</p>
 <p>Knight image from <a href="https://pixabay.com/users/silviap_design-1583911/">SilviaP_Design</a>.</p>
 <p>Forest image from <a href="https://pixabay.com/users/yuri_b-2216431/">Yuri_B</a>.</p>
