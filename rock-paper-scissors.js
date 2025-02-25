@@ -42,24 +42,21 @@ function toggleMute() {
 	muted = !muted;
 }
 
-function focusRock() {
-	document.querySelector(".rock .shimmer").style.visibility = "visible";
+function focusMuteBtn() {
+	document.querySelector(".mute-btn").style.boxShadow = "0px 0px 12px";
 }
-function focusPaper() {
-	document.querySelector(".paper .shimmer").style.visibility = "visible";
+function unfocusMuteBtn() {
+	document.querySelector(".mute-btn").style.boxShadow = "0px 0px 0px";
 }
-function focusScissors() {
-	document.querySelector(".scissors .shimmer").style.visibility = "visible";
+function focusUp(c) {
+	document.querySelector(c + " .shimmer").style.visibility = "visible";
+	followMouse(c);
 }
-function unfocusRock() {
-	document.querySelector(".rock .shimmer").style.visibility = "hidden";
+function unfocus(c) {
+	document.querySelector(c + " .shimmer").style.visibility = "hidden";
+	followMouse(c);
 }
-function unfocusPaper() {
-	document.querySelector(".paper .shimmer").style.visibility = "hidden";
-}
-function unfocusScissors() {
-	document.querySelector(".scissors .shimmer").style.visibility = "hidden";
-}
+
 function clickRock() {
 	playRound("rock");
 }
@@ -159,3 +156,41 @@ function getNewTransforms(rotation) {
 	}
 	return [lyt, ryt];
 }
+
+/////Code in this section below modified from an article by Armando Canals for the 3D effect.
+// https://www.armandocanals.com/posts/CSS-transform-rotating-a-3D-object-perspective-based-on-mouse-position.html.
+function followMouse(weaponClass) {
+	let constrain = 20;
+	let mouseOverContainer = document.querySelector(weaponClass);
+	let imgLayer = document.querySelector(weaponClass + " img");
+
+	function transforms(x, y, el) {
+		let box = el.getBoundingClientRect();
+		let calcX = -(y - box.y - box.height / 2) / constrain;
+		let calcY = (x - box.x - box.width / 2) / constrain;
+
+		return (
+			"perspective(100px) " +
+			"   rotateX(" +
+			calcX +
+			"deg) " +
+			"   rotateY(" +
+			calcY +
+			"deg) "
+		);
+	}
+
+	function transformElement(el, xyEl) {
+		el.style.transform = transforms.apply(null, xyEl);
+	}
+
+	mouseOverContainer.onmousemove = function (e) {
+		let xy = [e.clientX, e.clientY];
+		let position = xy.concat([imgLayer]);
+
+		window.requestAnimationFrame(function () {
+			transformElement(imgLayer, position);
+		});
+	};
+}
+//////End section for Armando Canals

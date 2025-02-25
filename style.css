@@ -23,6 +23,7 @@ p {
 	background: var(--light-teal);
 	padding: 8px;
 	border-radius: 50%;
+	/*box-shadow: 0px 0px 18px;*/
 }
 .top {
 	display: flex;

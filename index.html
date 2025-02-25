@@ -16,6 +16,8 @@
 				alt="Unmuted"
 				height="35"
 				onclick="toggleMute()"
+				onmouseover="focusMuteBtn()"
+				onmouseout="unfocusMuteBtn()"
 			/>
 		</div>
 		<div class="top">
@@ -42,7 +44,7 @@
 					use these golden scales to keep score. You must tip the scales all the
 					way to your side
 					<i>(in other words, your score must be greater than mine by 3).</i>
-					If the scales tip all the way to my side, I win.&rdquo;
+					If the scales tip all the way to my side, you lose.&rdquo;
 				</p>
 			</div>
 			<img src="./img/knight.png" alt="A knight (you)" height="250" />
@@ -51,8 +53,8 @@
 		<div class="options">
 			<div
 				onclick="clickRock()"
-				onmouseover="focusRock()"
-				onmouseout="unfocusRock()"
+				onmouseover="focusUp('.rock')"
+				onmouseout="unfocus('.rock')"
 				class="rock"
 			>
 				<img src="./img/rock.png" alt="Rock" height="100" />
@@ -60,8 +62,8 @@
 			</div>
 			<div
 				onclick="clickPaper()"
-				onmouseover="focusPaper()"
-				onmouseout="unfocusPaper()"
+				onmouseover="focusUp('.paper')"
+				onmouseout="unfocus('.paper')"
 				class="paper"
 			>
 				<img src="./img/paper.png" alt="Paper" height="100" />
@@ -69,8 +71,8 @@
 			</div>
 			<div
 				onclick="clickScissors()"
-				onmouseover="focusScissors()"
-				onmouseout="unfocusScissors()"
+				onmouseover="focusUp('.scissors')"
+				onmouseout="unfocus('.scissors')"
 				class="scissors"
 			>
 				<img src="./img/scissors.png" alt="Scissors" height="100" />
