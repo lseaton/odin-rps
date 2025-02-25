@@ -1,4 +1,5 @@
-<p>A rock, paper, scissors game.</p>
+<p>A rock, paper, scissors game themed as a fantasy knight's trial, featuring interactive design, a scale point system, and audio effects.</p>
+<p>See the live here: https://lseaton.github.io/odin-rps.</p>
 <br>
 <p>--Pixabay credits--</p>
 <p>Rock, paper, and scissors audio from <a href="https://pixabay.com/users/freesound_community-46691455/">freesound_community</a>.</p>

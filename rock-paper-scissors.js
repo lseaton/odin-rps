@@ -15,16 +15,16 @@ const left = document.getElementById("left");
 const right = document.getElementById("right");
 const leftDivs = Array.prototype.slice.call(left.children); //all div children of the left side, as an array
 const rightDivs = Array.prototype.slice.call(right.children); //all div children of the right side, as an array
-const rockWins = new Audio("./audio/clang.mp3");
-const paperWins = new Audio("./audio/rustle-paper.mp3");
-const scissorsWins = new Audio("./audio/snip.mp3");
+const humanWinsRound = new Audio("./audio/retro-coin-1.mp3");
+const computerWinsRound = new Audio("./audio/retro-hurt-1.mp3");
+const tieRound = new Audio("./audio/retro-select.mp3");
 let humanScore = 0;
 let computerScore = 0;
 let muted = false;
 
-rockWins.volume = 0.3;
-paperWins.volume = 1;
-scissorsWins.volume = 1;
+humanWinsRound.volume = 0.08;
+computerWinsRound.volume = 0.1;
+tieRound.volume = 0.05;
 
 window.onload = function () {
 	document.getElementById("music").volume = 0.2;
@@ -74,93 +74,68 @@ function playRound(humanChoice) {
 		if (computerIndex + 2 == humanIndex || computerIndex - 1 == humanIndex) {
 			//Computer wins this round
 			changeWeight(-1);
-			if (!gameOver()) {
+			if (!muted) {
+				computerWinsRound.play();
+			}
+			if (!isGameOver()) {
 				computerScore++;
 				message.textContent +=
 					"and " + computerChoice + " beats " + humanChoice + ". I win.";
-				playSound(computerChoice);
 			} else {
 				//Computer wins game
-				computerWins();
+				gameOver("computer");
 			}
 		} else {
 			//Human wins this round
 			changeWeight(1);
-			if (!gameOver()) {
+			if (!muted) {
+				humanWinsRound.play();
+			}
+			if (!isGameOver()) {
 				humanScore++;
 				message.textContent +=
 					"but " + humanChoice + " beats " + computerChoice + ". You win.";
-				playSound(humanChoice);
 			} else {
 				//Human wins game
-				humanWins();
+				gameOver("human");
 			}
 		}
 	} else {
 		//Tie
 		message.textContent += "so it's a tie.";
-		playSound(computerChoice);
-	}
-}
-
-function playSound(sound) {
-	if (!muted) {
-		switch (sound) {
-			case "rock":
-				rockWins.play();
-				break;
-			case "paper":
-				paperWins.play();
-				break;
-			case "scissors":
-				scissorsWins.play();
-				break;
-			default:
-				pass;
+		if (!muted) {
+			tieRound.play();
 		}
 	}
 }
 
-//Check if game is over, return string indicating the winner if so and false if not
-function gameOver() {
+//Check if game should be over, return string indicating the winner if so and false if not
+function isGameOver() {
 	let matrix = window.getComputedStyle(bar).transform.toString();
-	if (matrix == matRotation[0]) {
-		return "computerWin";
-	} else if (matrix == matRotation[6]) {
-		return "humanWin";
+	return matrix == matRotation[0] || matrix == matRotation[6];
+}
+
+function gameOver(winner) {
+	if (winner == "human") {
+		message.textContent =
+			"Your intuition has served you well! You are now a knight of the realm.";
 	} else {
-		return false;
+		message.textContent =
+			"Your intuition has failed you. You shall not become a knight today.";
+	}
+	//Disable the options
+	let weapons = document.querySelectorAll(".options div");
+	let weaponClasses = [".rock", ".paper", ".scissors"];
+	for (let i = 0; i < weaponClasses.length; i++) {
+		unfocus(weaponClasses[i]);
+	}
+	for (let i = 0; i < weapons.length; i++) {
+		weapons[i].onclick = null;
+		weapons[i].onmouseover = null;
+		weapons[i].style.opacity = "0.5";
 	}
 }
 
-function humanWins() {
-	message.textContent =
-		"Your intuition has served you well! You are now a knight of the realm.";
-	let weapons = document.querySelectorAll(".options div");
-	let weaponClasses = [".rock", ".paper", ".scissors"];
-	for (let i = 0; i < weaponClasses.length; i++) {
-		unfocus(weaponClasses[i]);
-	}
-	for (let i = 0; i < weapons.length; i++) {
-		weapons[i].onclick = null;
-		weapons[i].onmouseover = null;
-		weapons[i].style.opacity = "0.5";
-	}
-}
-function computerWins() {
-	message.textContent =
-		"Your intuition has failed you. You shall not become a knight today.";
-	let weapons = document.querySelectorAll(".options div");
-	let weaponClasses = [".rock", ".paper", ".scissors"];
-	for (let i = 0; i < weaponClasses.length; i++) {
-		unfocus(weaponClasses[i]);
-	}
-	for (let i = 0; i < weapons.length; i++) {
-		weapons[i].onclick = null;
-		weapons[i].onmouseover = null;
-		weapons[i].style.opacity = "0.5";
-	}
-}
 //Make the scales appear to be weighed more in one direction
 function changeWeight(val) {
 	let br = getNewBarRotation(val); //bar rotation
