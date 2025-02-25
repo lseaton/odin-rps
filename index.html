@@ -47,31 +47,37 @@
 			</div>
 			<img src="./img/knight.png" alt="A knight (you)" height="250" />
 		</div>
-		<p>Choose your weapon:</p>
+		<h1>Choose your weapon:</h1>
 		<div class="options">
-			<img
-				class="option"
-				src="./img/rock.png"
-				alt="Rock"
-				height="100"
+			<div
 				onclick="clickRock()"
-			/>
-			<img
-				class="option"
-				src="./img/paper.png"
-				alt="Paper"
-				height="100"
+				onmouseover="focusRock()"
+				onmouseout="unfocusRock()"
+				class="rock"
+			>
+				<img src="./img/rock.png" alt="Rock" height="100" />
+				<div class="shimmer"></div>
+			</div>
+			<div
 				onclick="clickPaper()"
-			/>
-			<img
-				class="option"
-				src="./img/scissors.png"
-				alt="Scissors"
-				height="100"
+				onmouseover="focusPaper()"
+				onmouseout="unfocusPaper()"
+				class="paper"
+			>
+				<img src="./img/paper.png" alt="Paper" height="100" />
+				<div class="shimmer"></div>
+			</div>
+			<div
 				onclick="clickScissors()"
-			/>
+				onmouseover="focusScissors()"
+				onmouseout="unfocusScissors()"
+				class="scissors"
+			>
+				<img src="./img/scissors.png" alt="Scissors" height="100" />
+				<div class="shimmer"></div>
+			</div>
 		</div>
-		<p id="message">Good luck!</p>
+		<h2 id="message">Good luck!</h2>
 
 		<script src="rock-paper-scissors.js"></script>
 	</body>

@@ -1,14 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Macondo+Swash+Caps&family=MedievalSharp&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
 :root {
 	--scales: #ebce2c;
 	--teal: #0d7c73;
 	--light-teal: #39f8f5;
 	--dark-teal: #013836;
 }
+
 body {
 	margin: 0;
-}
-p {
+	font-family: Macondo Swash Caps, sans-serif;
 	text-align: center;
+}
+
+p {
+	line-height: 1.4;
 }
 
 .mute-btn {
@@ -33,9 +39,34 @@ p {
 }
 .options {
 	display: flex;
-	gap: 10px;
 	justify-content: space-evenly;
 }
+.options div {
+	height: 100px;
+}
+
+/*Code below modified from https://www.codeguage.com/blog/shimmer-effect-html-css.*/
+@keyframes shimmer {
+	to {
+		background-position-x: 100%;
+	}
+}
+.shimmer {
+	width: 350px;
+	height: 100px; /*Width of options*/
+	background: linear-gradient(
+		-45deg,
+		transparent 35%,
+		white 50%,
+		transparent 65%
+	);
+	transform: translateY(-105px);
+	background-size: 40%;
+	background-position-x: 0%;
+	background-repeat: no-repeat;
+	animation: shimmer 0.75s infinite linear;
+}
+
 .center-helpful {
 	display: flex;
 	flex-direction: column;

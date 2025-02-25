@@ -24,6 +24,9 @@ let muted = false;
 
 window.onload = function () {
 	document.getElementById("music").play();
+	for (let i = 0; i < 3; i++) {
+		document.querySelectorAll(".shimmer")[i].style.visibility = "hidden";
+	}
 };
 
 //TODO: when user refreshes the page, the toggle botton doesn't work for the next two clicks. Fix this.
@@ -39,6 +42,24 @@ function toggleMute() {
 	muted = !muted;
 }
 
+function focusRock() {
+	document.querySelector(".rock .shimmer").style.visibility = "visible";
+}
+function focusPaper() {
+	document.querySelector(".paper .shimmer").style.visibility = "visible";
+}
+function focusScissors() {
+	document.querySelector(".scissors .shimmer").style.visibility = "visible";
+}
+function unfocusRock() {
+	document.querySelector(".rock .shimmer").style.visibility = "hidden";
+}
+function unfocusPaper() {
+	document.querySelector(".paper .shimmer").style.visibility = "hidden";
+}
+function unfocusScissors() {
+	document.querySelector(".scissors .shimmer").style.visibility = "hidden";
+}
 function clickRock() {
 	playRound("rock");
 }
@@ -55,7 +76,6 @@ function playRound(humanChoice) {
 	let humanIndex = options.indexOf(humanChoice);
 	let message = document.getElementById("message");
 
-	console.log(options[computerIndex]);
 	message.textContent = "I chose " + computerChoice + ", ";
 
 	if (humanIndex != computerIndex) {
