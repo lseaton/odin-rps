@@ -70,6 +70,7 @@ p {
 	background-position-x: 0%;
 	background-repeat: no-repeat;
 	animation: shimmer 0.75s infinite linear;
+	visibility: hidden;
 }
 /*End code section modified from https://www.codeguage.com/blog/shimmer-effect-html-css.*/
 

@@ -1,7 +1,3 @@
-//TODO: (if you'd like)
-//Add hurt animation (short red+shake) to the wizard and knight sprites when they lose a round
-//Make audio default muted, but prompt the user to turn on audio, recommended.
-
 const options = ["rock", "paper", "scissors"];
 //Array for the matrices representing different bar rotations, ascending from -15 to 15 by fives
 const matRotation = [
@@ -19,6 +15,7 @@ const left = document.getElementById("left");
 const right = document.getElementById("right");
 const leftDivs = Array.prototype.slice.call(left.children); //all div children of the left side, as an array
 const rightDivs = Array.prototype.slice.call(right.children); //all div children of the right side, as an array
+const backgroundMusic = new Audio("./audio/deep-in-the-dell.mp3");
 const humanWinsRound = new Audio("./audio/retro-coin-1.mp3");
 const computerWinsRound = new Audio("./audio/retro-hurt-1.mp3");
 const tieRound = new Audio("./audio/retro-select.mp3");
@@ -28,23 +25,15 @@ const youWin = new Audio("./audio/you-win.mp3");
 let numRounds = 0;
 let muted = false;
 
+backgroundMusic.volume = 0.4;
 humanWinsRound.volume = 0.2;
 computerWinsRound.volume = 0.2;
 tieRound.volume = 0.1;
 youLose.volume = 0.3;
-youWin.volume = 0.4;
-
-window.onload = function () {
-	document.getElementById("music").volume = 0.4;
-	document.getElementById("music").play();
-	for (let i = 0; i < 3; i++) {
-		document.querySelectorAll(".shimmer")[i].style.visibility = "hidden";
-	}
-};
+youWin.volume = 0.25;
 
 function toggleMute() {
-	let music = document.getElementById("music");
-	muted ? music.play() : music.pause();
+	muted ? backgroundMusic.play() : backgroundMusic.pause();
 	let icon = document.getElementById("mute-icon");
 	let currIconSrc = icon.src;
 	let newIconSrc = currIconSrc.toString().includes("/img/unmute.png")
@@ -70,6 +59,9 @@ function unfocus(c) {
 }
 
 function playRound(humanChoice) {
+	if (!muted) {
+		backgroundMusic.play();
+	}
 	let computerChoice = options[Math.floor(Math.random() * options.length)];
 	let computerIndex = options.indexOf(computerChoice);
 	let humanIndex = options.indexOf(humanChoice);
@@ -130,7 +122,7 @@ function isGameOver() {
 }
 
 function gameOver(winner) {
-	document.getElementById("music").pause();
+	backgroundMusic.pause();
 	let message = document.getElementById("message");
 	if (winner == "human") {
 		if (!muted) {
