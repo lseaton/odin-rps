@@ -1,5 +1,6 @@
-//TODO: Add victory and loss music
-//TODO: (eventually) Add hurt animation (short red+shake) to the wizard and knight sprites when they lose a round
+//TODO: (if you'd like)
+//Add hurt animation (short red+shake) to the wizard and knight sprites when they lose a round
+//Make audio default muted, but prompt the user to turn on audio, recommended.
 
 const options = ["rock", "paper", "scissors"];
 //Array for the matrices representing different bar rotations, ascending from -15 to 15 by fives
@@ -21,24 +22,26 @@ const rightDivs = Array.prototype.slice.call(right.children); //all div children
 const humanWinsRound = new Audio("./audio/retro-coin-1.mp3");
 const computerWinsRound = new Audio("./audio/retro-hurt-1.mp3");
 const tieRound = new Audio("./audio/retro-select.mp3");
+const youLose = new Audio("./audio/you-lose.mp3");
+const youWin = new Audio("./audio/you-win.mp3");
 
 let numRounds = 0;
 let muted = false;
 
-humanWinsRound.volume = 0.08;
-computerWinsRound.volume = 0.1;
-tieRound.volume = 0.05;
+humanWinsRound.volume = 0.2;
+computerWinsRound.volume = 0.2;
+tieRound.volume = 0.1;
+youLose.volume = 0.3;
+youWin.volume = 0.4;
 
 window.onload = function () {
-	document.getElementById("music").volume = 0.2;
+	document.getElementById("music").volume = 0.4;
 	document.getElementById("music").play();
 	for (let i = 0; i < 3; i++) {
 		document.querySelectorAll(".shimmer")[i].style.visibility = "hidden";
 	}
 };
 
-/*TODO: Make audio default muted, but prompt (with emphasis) the user to turn on audio, recommended. 
-Browsers will often default mute background music anyway, no matter what your code says*/
 function toggleMute() {
 	let music = document.getElementById("music");
 	muted ? music.play() : music.pause();
@@ -127,13 +130,20 @@ function isGameOver() {
 }
 
 function gameOver(winner) {
+	document.getElementById("music").pause();
 	let message = document.getElementById("message");
 	if (winner == "human") {
+		if (!muted) {
+			youWin.play();
+		}
 		message.textContent =
 			"Your intuition has served you well! Having fought bravely for " +
 			numRounds +
 			" rounds, you have proven yourself worthy of becoming a knight of the realm.";
 	} else {
+		if (!muted) {
+			youLose.play();
+		}
 		message.textContent =
 			"Alas, your intuition failed you. You fought bravely for " +
 			numRounds +

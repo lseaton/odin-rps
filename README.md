@@ -1,4 +1,5 @@
 <p>A rock, paper, scissors game themed as a fantasy knight's trial, featuring interactive design, a scale point system, and audio effects.</p>
+<p>See the live here: https://lseaton.github.io/odin-rps.</p>
 <br>
 <p>--Pixabay credits--</p>
 <p>Retro game sounds from <a href="https://pixabay.com/users/driken5482-45721595/">Driken5482</a>.</p>
